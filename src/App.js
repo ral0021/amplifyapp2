@@ -32,7 +32,7 @@ class App extends Component {
   }
 }
  
-export default App;
+export default withAuthenticator(App);
 
 // Remember this for how to add more routes
 // import About from './components/About';
