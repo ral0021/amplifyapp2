@@ -52,7 +52,7 @@ const home = () => {
                
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" onclick="window.location.href='./Pill_Information.html'">Pill Setup</button>
+                <button class="menu-button btn btn-light my-2" ><a href="/pill_information">Pill Setup</a></button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
                 <button class="menu-button btn btn-light my-2" onclick="window.location.href='./edit_information.html'">Edit Information</button>

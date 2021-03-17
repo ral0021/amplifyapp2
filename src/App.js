@@ -22,6 +22,7 @@ class App extends Component {
             <Switch>
              <Route path="/" component={Home} exact/>
              <Route path="/consumption_history" component={Consumption_history}/>
+             <Route path="/pill_information" component={Pill_information}/>
             <Route component={Error}/>
            </Switch>
            <AmplifySignOut />
