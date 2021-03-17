@@ -9,6 +9,9 @@ const Navigation = () => {
           <NavLink to="/consumption_history">Consumption History</NavLink>
           <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/pill_information">Pill Setup</NavLink>
+          <NavLink to="/detailed_dispense_history">Detailed Dispense History</NavLink>
+          <NavLink to="/verification_photos">Verification Photos</NavLink>
+          <NavLink to="/dispense_schedule">Dispense Schedule</NavLink>
        </div>
     );
 }

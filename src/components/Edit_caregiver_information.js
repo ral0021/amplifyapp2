@@ -1,6 +1,6 @@
 import React from 'react';
  
-const Pill_information = () => {
+const Edit_caregiver_information = () => {
     return (
        <div>
        		<meta charset="utf-8"/>
@@ -10,13 +10,12 @@ const Pill_information = () => {
     
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet"/>
-    
-    <title>Pill Information</title>
-  
+    <title>Edit User Information</title>
+ 
     <div id="menu-banner" class="row text-center py-3">
         <div class="col">
             <p class="display-5" id="login-title">
-                <a href="./">
+                <a href="./main_menu.html">
                     <img id="menu-image" src="https://wchstv.com/resources/media/1f5b2909-ee90-495b-be68-68d26537cbab-large16x9_WVU.png?1518011273124"/>
                 </a>
             </p>
@@ -24,32 +23,37 @@ const Pill_information = () => {
     </div>
     
     <div class="container-fluid text-center mt-5">
-        <div class="row justify-content-center my-5 ">
-            <h1 class="display-6 mb-5">Pill Information</h1>
-        </div>
+        <div class="container-fluid text-center mt-5">
+            
+            <form id="login-form" class="justify-content-center">
+                <div class="row">
+                    <h1 class="display-6">Edit User Information</h1>
+                </div>
+                <div class="row justify-content-center my-2">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-6">
+                        <input id="login-username" type="text" class="form-control" placeholder="Enter New Caregiver Code" autofocus required/>
+                    </div>
+                </div>
 
-        <div class="row justify-content-center pb-5">
-            <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/dispense_schedule">Dispense Schedule</a></button>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/current_medication">Current Medication</a></button>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/add_medication">Add Medication</a></button>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
+                <div class="row justify-content-center my-2">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-6">
+                        <input type="submit" class="btn btn-light form-control"/>
+                    </div>
+                </div>
+                
+            </form>
+            <div class="row justify-content-center my-2">
+                <div class="col-xl-2 col-lg-3 col-12">
+                    <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
+                </div>
             </div>
         </div>
     </div>
 
-    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-
-        </div>
+    </div>
     );
 }
  
-export default Pill_information;
+export default Edit_caregiver_information;

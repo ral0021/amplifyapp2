@@ -1,17 +1,18 @@
 import React from 'react';
  
-const Consumption_history = () => {
+const Verification_photos = () => {
     return (
     	<div>
     		<meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-   
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"/>
     
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet"/>
-   
-    <title>Consumption History</title>
+    
+    
+    <title>Verification Photos</title>
   
     <div id="menu-banner" class="row text-center py-3">
         <div class="col">
@@ -25,32 +26,36 @@ const Consumption_history = () => {
     
     <div class="container-fluid text-center mt-5">
         <div class="row justify-content-center my-5 ">
-            <h1 class="display-6 mb-5">Consumption History</h1>
-            <div class="col-md-5 col-sm-8 col-9">
-                <div class="card">
-                    <div class="card-header">Consumption Chart</div>
-                    <div class="card-header">Date : Time : Amount</div>
-                    <ul class="list-group list-group-flush">
-                        <li id="green" class="list-group-item"> 
-                            2/5/21 : 9:00 A.M. : 03
-                        </li>
-                        <li id="yellow" class="list-group-item"> 
-                            2/5/21 : 12:00 P.M. : 04
-                        </li>
-                        <li id="green" class="list-group-item"> 
-                            2/5/21 : 5:00 P.M. : 06
-                        </li>
-                    </ul>
+            <h1 class="display-6 mb-5">Verification Photos</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img id="menu-image" src="./photos/me.jpg"/>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">Discription</div>
+                            <p class="text-center">Sample Text</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img id="menu-image" src="./photos/me.jpg"/>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">Discription</div>
+                            <p class="text-center">Sample Text</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="row justify-content-center pb-5">
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2"><a href="/detailed_dispense_history">Detailed Dispense History</a></button>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/verification_photos">Verification Photos</a></button>
+                <button class="menu-button btn btn-light my-2" ><a href="/consumption_history">Back To Consumption History</a></button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
                 <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
@@ -67,4 +72,4 @@ const Consumption_history = () => {
     );
 }
  
-export default Consumption_history;
+export default Verification_photos;
