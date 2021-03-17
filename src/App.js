@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
  
 import Home from './components/Main_menu';
 import Consumption_history from './components/Consumption_history'
+import Pill_information from './components/Pill_information'
 
 import Error from './components/Error';
 import Navigation from './components/Navigation';

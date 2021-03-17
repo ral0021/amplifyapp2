@@ -67,4 +67,4 @@ const Consumption_history = () => {
     );
 }
  
-export default home;
+export default Consumption_history;
