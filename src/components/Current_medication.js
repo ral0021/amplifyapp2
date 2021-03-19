@@ -8,13 +8,19 @@ import { API, Auth} from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 
 const initialFormState = { name: '', quantity: '', refill: '' }
-
+var re;
 
 const Current_medication = () => {
 
 	const [medications, setMedications] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
-
+  
+  Promise.resolve(getUser()).then(function(result){
+            			console.log("result:", result);
+            			re= new String(result);
+            			console.log("rein", re);
+            		})
+  console.log("reout", re);
 
   // console.log(Promise.resolve(getUser()).then(function(result)));
 
@@ -49,6 +55,7 @@ const Current_medication = () => {
     setMedications(newMedicationsArray);
     await API.graphql({ query: deleteMedicationMutation, variables: { input: { id } }});
   }
+  
 
     return (
        <div>
@@ -87,7 +94,7 @@ const Current_medication = () => {
             </div>
           </div>
         </form>
-
+       
          
          <div class="row justify-content-center my-2">
           <div class="col-lg-6 col-md-8 col-10 px-1">
@@ -111,11 +118,7 @@ const Current_medication = () => {
          		{medications.map(item => (
          			
          		
-            	<If test={ 
-            		Promise.resolve(getUser()).then(function(result){
-            			console.log(result);
-            			return result == item.userid;
-            		})}>
+            	<If test={re.localeCompare(new String(item.userid))==0}>
             	<tr>
             	<td>0</td>
               <td>{item.name}</td>
