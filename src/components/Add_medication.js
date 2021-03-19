@@ -3,7 +3,7 @@ import { listMedications } from '../graphql/queries';
 import { createMedication as createMedicationMutation, deleteMedication as deleteMedicationMutation } from '../graphql/mutations';
 
 
-import { API } from 'aws-amplify';
+import { API, Auth} from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 
 
@@ -14,9 +14,17 @@ const Add_medication = () => {
 	const [medications, setMedications] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
+
   useEffect(() => {
     fetchMedications();
   }, []);
+
+  async function getUser() {
+  	// await (await Auth.currentCredentials()).getPromise();
+   //  const user = await Auth.currentUserInfo();
+   const user = (await Auth.currentSession()).getIdToken().payload;
+    console.log("info:", user["cognito:username"]);
+  }
 
   async function fetchMedications() {
     const apiData = await API.graphql({ query: listMedications });
@@ -24,9 +32,9 @@ const Add_medication = () => {
   }
 
   async function createMedication() {
-  	console.log("a")
     if (!formData.name || !formData.quantity || !formData.refill) return;
-    console.log("b")
+    getUser()
+    formData.userid = (await Auth.currentSession()).getIdToken().payload["cognito:username"];
     await API.graphql({ query: createMedicationMutation, variables: { input: formData } });
     setMedications([ ...medications, formData ]);
     setFormData(initialFormState);
@@ -88,7 +96,7 @@ const Add_medication = () => {
         </div>
         <div class="row justify-content-center my-4">
           <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7">
-              <input type="submit" class="btn btn-light form-control" onClick={createMedication}/>
+              <input type="submit" class="btn btn-light form-control" onClick={createMedication }/>
           </div>
         </div>
       </form>      

@@ -8,6 +8,7 @@ export const onCreateMedication = /* GraphQL */ `
       name
       quantity
       refill
+      userid
       createdAt
       updatedAt
     }
@@ -20,6 +21,7 @@ export const onUpdateMedication = /* GraphQL */ `
       name
       quantity
       refill
+      userid
       createdAt
       updatedAt
     }
@@ -32,6 +34,7 @@ export const onDeleteMedication = /* GraphQL */ `
       name
       quantity
       refill
+      userid
       createdAt
       updatedAt
     }

@@ -3,4 +3,5 @@ type Medication @model {
   name: String!
   quantity: String
   refill: String
+  userid: String
 }

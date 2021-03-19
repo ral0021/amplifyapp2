@@ -8,6 +8,7 @@ export const getMedication = /* GraphQL */ `
       name
       quantity
       refill
+      userid
       createdAt
       updatedAt
     }
@@ -25,6 +26,7 @@ export const listMedications = /* GraphQL */ `
         name
         quantity
         refill
+        userid
         createdAt
         updatedAt
       }

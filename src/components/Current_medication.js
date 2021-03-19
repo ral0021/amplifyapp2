@@ -1,6 +1,55 @@
-import React from 'react';
- 
+import React, { useState, useEffect } from 'react';
+import { listMedications } from '../graphql/queries';
+import { createMedication as createMedicationMutation, deleteMedication as deleteMedicationMutation } from '../graphql/mutations';
+import { Case, ForEach, If, Switch } from 'react-control-flow-components';
+
+
+import { API, Auth} from 'aws-amplify';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+
+const initialFormState = { name: '', quantity: '', refill: '' }
+
+
 const Current_medication = () => {
+
+	const [medications, setMedications] = useState([]);
+  const [formData, setFormData] = useState(initialFormState);
+
+
+  // console.log(Promise.resolve(getUser()).then(function(result)));
+
+  useEffect(() => {
+    fetchMedications();
+  }, []);
+
+  async function getUser() {
+  	// await (await Auth.currentCredentials()).getPromise();
+   //  const user = await Auth.currentUserInfo();
+   const user = (await Auth.currentSession().then(token => { return token } )).getIdToken().payload;
+   console.log("info", user["cognito:username"]);
+    return user["cognito:username"];
+  }
+
+  async function fetchMedications() {
+    const apiData = await API.graphql({ query: listMedications });
+    setMedications(apiData.data.listMedications.items);
+  }
+
+  async function createMedication() {
+    if (!formData.name || !formData.quantity || !formData.refill) return;
+    getUser()
+    formData.userid = (await Auth.currentSession()).getIdToken().payload["cognito:username"];
+    await API.graphql({ query: createMedicationMutation, variables: { input: formData } });
+    setMedications([ ...medications, formData ]);
+    setFormData(initialFormState);
+  }
+
+  async function deleteMedication({ id }) {
+    const newMedicationsArray = medications.filter(note => note.id !== id);
+    setMedications(newMedicationsArray);
+    await API.graphql({ query: deleteMedicationMutation, variables: { input: { id } }});
+  }
+
     return (
        <div>
        		<meta charset="utf-8"/>
@@ -45,7 +94,6 @@ const Current_medication = () => {
             <hr/>
           </div>
         </div>
-
         
         <div class="row justify-content-center">
           <div class="col-lg-6 col-md-8 col-10 scroll-table">
@@ -59,42 +107,26 @@ const Current_medication = () => {
                 </tr>
               </thead>
               <tbody class="">
-                <tr>
-                  <td>1</td>
-                  <td>Med1</td>
-                  <td>60</td>
-                  <td>30 Days</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Med2</td>
-                  <td>120</td>
-                  <td>30 Days</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Med3</td>
-                  <td>90</td>
-                  <td>30 Days</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Med4</td>
-                  <td>60</td>
-                  <td>30 Days</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Med5</td>
-                  <td>120</td>
-                  <td>30 Days</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Med6</td>
-                  <td>90</td>
-                  <td>30 Days</td>
-                </tr>
+
+         		{medications.map(item => (
+         			
+         		
+            	<If test={ 
+            		Promise.resolve(getUser()).then(function(result){
+            			console.log(result);
+            			return result == item.userid;
+            		})}>
+            	<tr>
+            	<td>0</td>
+              <td>{item.name}</td>
+              <td>{item.quantity}</td>
+              <td>{item.refill}</td>
+              </tr>
+              </If>
+         
+              ))}
+
+                
               </tbody>
             </table>
           </div>
@@ -120,5 +152,6 @@ const Current_medication = () => {
     </div>
     );
 }
+
  
 export default Current_medication;
