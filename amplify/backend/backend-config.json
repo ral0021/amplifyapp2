@@ -8,7 +8,7 @@
     }
   },
   "api": {
-    "notesapp": {
+    "med": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {

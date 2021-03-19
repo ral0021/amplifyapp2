@@ -1,34 +1,37 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateNote = /* GraphQL */ `
-  subscription OnCreateNote {
-    onCreateNote {
+export const onCreateMedication = /* GraphQL */ `
+  subscription OnCreateMedication {
+    onCreateMedication {
       id
       name
-      description
+      quantity
+      refill
       createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateNote = /* GraphQL */ `
-  subscription OnUpdateNote {
-    onUpdateNote {
+export const onUpdateMedication = /* GraphQL */ `
+  subscription OnUpdateMedication {
+    onUpdateMedication {
       id
       name
-      description
+      quantity
+      refill
       createdAt
       updatedAt
     }
   }
 `;
-export const onDeleteNote = /* GraphQL */ `
-  subscription OnDeleteNote {
-    onDeleteNote {
+export const onDeleteMedication = /* GraphQL */ `
+  subscription OnDeleteMedication {
+    onDeleteMedication {
       id
       name
-      description
+      quantity
+      refill
       createdAt
       updatedAt
     }

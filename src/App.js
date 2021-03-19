@@ -22,8 +22,13 @@ import Edit_caregiver_information from './components/Edit_caregiver_information'
 import Edit_machine_information from './components/Edit_machine_information'
 import Error from './components/Error';
 import Navigation from './components/Navigation';
+
+
+
+
  
 class App extends Component {
+  
   render() {
     return (      
        <BrowserRouter>

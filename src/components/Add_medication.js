@@ -1,6 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { listMedications } from '../graphql/queries';
+import { createMedication as createMedicationMutation, deleteMedication as deleteMedicationMutation } from '../graphql/mutations';
+
+
+import { API } from 'aws-amplify';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+
+
+	const initialFormState = { name: '', quantity: '', refill: '' }
+	
  
 const Add_medication = () => {
+	const [medications, setMedications] = useState([]);
+  const [formData, setFormData] = useState(initialFormState);
+
+  useEffect(() => {
+    fetchMedications();
+  }, []);
+
+  async function fetchMedications() {
+    const apiData = await API.graphql({ query: listMedications });
+    setMedications(apiData.data.listMedications.items);
+  }
+
+  async function createMedication() {
+    if (!formData.name || !formData.quantity || !formData.refill) return;
+    await API.graphql({ query: createMedicationMutation, variables: { input: formData } });
+    setMedications([ ...medications, formData ]);
+    setFormData(initialFormState);
+  }
+
+  async function deleteMedication({ id }) {
+    const newMedicationsArray = medications.filter(note => note.id !== id);
+    setMedications(newMedicationsArray);
+    await API.graphql({ query: deleteMedicationMutation, variables: { input: { id } }});
+  }
+
     return (
        <div>
        		<meta charset="utf-8"/>
@@ -33,22 +68,25 @@ const Add_medication = () => {
 
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
-                <input type="text" class="form-control custom-input" placeholder="Medication Name" required/>
+                <input type="text" class="form-control custom-input" placeholder="Medication Name" required onChange={e => setFormData({ ...formData, 'name': e.target.value})}
+        value={formData.name}/>
             </div>
         </div>
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
-                <input type="number" class="form-control custom-input" placeholder="Quantity" required/>
+                <input type="number" class="form-control custom-input" placeholder="Quantity" onChange={e => setFormData({ ...formData, 'quantity': e.target.value})}
+        value={formData.quantity} required/>
             </div>
         </div>
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
-                <input type="number" class="form-control custom-input" placeholder="Refill Frequency (Days)" required/>
+                <input type="number" class="form-control custom-input" placeholder="Refill Frequency (Days)" required onChange={e => setFormData({ ...formData, 'refill': e.target.value})}
+                value={formData.refill}/>
             </div>
         </div>
         <div class="row justify-content-center my-4">
           <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7">
-              <input type="submit" class="btn btn-light form-control"/>
+              <input type="submit" class="btn btn-light form-control" onclick={createMedication}/>
           </div>
         </div>
       </form>      
