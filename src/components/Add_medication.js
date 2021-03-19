@@ -24,7 +24,9 @@ const Add_medication = () => {
   }
 
   async function createMedication() {
+  	console.log("a")
     if (!formData.name || !formData.quantity || !formData.refill) return;
+    console.log("b")
     await API.graphql({ query: createMedicationMutation, variables: { input: formData } });
     setMedications([ ...medications, formData ]);
     setFormData(initialFormState);
@@ -86,7 +88,7 @@ const Add_medication = () => {
         </div>
         <div class="row justify-content-center my-4">
           <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7">
-              <input type="submit" class="btn btn-light form-control" onclick={createMedication}/>
+              <input type="submit" class="btn btn-light form-control" onClick={createMedication}/>
           </div>
         </div>
       </form>      
