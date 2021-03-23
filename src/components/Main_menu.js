@@ -48,14 +48,23 @@ const home = () => {
         <div class="row justify-content-center pb-5">
             <div class="col-xl-2 col-lg-3 col-12">
             	
-                <button class="menu-button btn btn-light my-2"><a href="/consumption_history">Consumption History</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/consumption_history';
+      }}>Consumption History</button>
                
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/pill_information">Pill Setup</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/pill_information';
+      }}>Pill Setup</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/edit_information">Edit Information</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/edit_information';
+      }}>Edit Information</button>
             </div>
         </div>
     </div>

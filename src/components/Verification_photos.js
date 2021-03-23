@@ -55,10 +55,16 @@ const Verification_photos = () => {
 
         <div class="row justify-content-center pb-5">
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/consumption_history">Back To Consumption History</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/consumption_history';
+      }}>Back To Consumption History</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
+                <button class="menu-button btn btn-dark my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/';
+      }}>Main Menu</button>
             </div>
         </div>
 

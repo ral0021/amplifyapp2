@@ -66,7 +66,10 @@ const Edit_machine_information = () => {
 
     <div class="row justify-content-center my-2">
                 <div class="col-xl-2 col-lg-3 col-12">
-                    <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
+                    <button class="menu-button btn btn-dark my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/';
+      }}>Main Menu</button>
                 </div>
             </div>
     

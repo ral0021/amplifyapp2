@@ -31,22 +31,37 @@ const Edit_information = () => {
 
         <div class="row justify-content-center pb-5">
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/edit_user_information">Enter New User Information</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/edit_user_information';
+      }}>Enter New User Information</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/edit_login_information">Enter New Login Information</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/edit_login_information';
+      }}>Enter New Login Information</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2"><a href="/edit_caregiver_information">Enter New Caregiver Code</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/edit_caregiver_information';
+      }}>Enter New Caregiver Code</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2"><a href="/edit_machine_information">Enter New Machine Information</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/edit_machine_information';
+      }}>Enter New Machine Information</button>
             </div>
         </div>
 
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
+                <button class="menu-button btn btn-dark my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/';
+      }}>Main Menu</button>
             </div>
         </div>
     </div>

@@ -107,7 +107,7 @@ const Current_medication = () => {
             <table class="table table-striped table-bordered table-hover table-responsive">
               <thead class="table-head">
                 <tr>
-                  <th>#</th>
+                  
                   <th>Name</th>
                   <th>Quantity</th>
                   <th>Refill Frequency</th>
@@ -120,7 +120,7 @@ const Current_medication = () => {
          		
             	<If test={re.localeCompare(new String(item.userid))==0}>
             	<tr>
-            	<td>0</td>
+            	
               <td>{item.name}</td>
               <td>{item.quantity}</td>
               <td>{item.refill}</td>
@@ -138,13 +138,22 @@ const Current_medication = () => {
         
         <div class="row justify-content-center">
           <div class="col-xl-2 col-lg-3 col-12">
-            <button type="button" class="btn btn-light menu-button" ><a href="/add_medication">Add Medication</a></button>
+            <button type="button" class="btn btn-light menu-button" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/add_medication';
+      }}>Add Medication</button>
           </div>
           <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/pill_information">Pill Information</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/pill_information';
+      }}>Pill Information</button>
             </div>
           <div class="col-xl-2 col-lg-3 col-12">
-            <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
+            <button class="menu-button btn btn-dark my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/';
+      }}>Main Menu</button>
           </div>
         </div>
     </div>

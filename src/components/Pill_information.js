@@ -30,16 +30,28 @@ const Pill_information = () => {
 
         <div class="row justify-content-center pb-5">
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/dispense_schedule">Dispense Schedule</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/dispense_schedule';
+      }}>Dispense Schedule</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/current_medication">Current Medication</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/current_medication';
+      }}>Current Medication</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/add_medication">Add Medication</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/add_medication';
+      }}>Add Medication</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
+                <button class="menu-button btn btn-dark my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/';
+      }}>Main Menu</button>
             </div>
         </div>
     </div>

@@ -47,13 +47,22 @@ const Consumption_history = () => {
 
         <div class="row justify-content-center pb-5">
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2"><a href="/detailed_dispense_history">Detailed Dispense History</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/detailed_dispense_history';
+      }}>Detailed Dispense History</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-light my-2" ><a href="/verification_photos">Verification Photos</a></button>
+                <button class="menu-button btn btn-light my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/verification_photos';
+      }}>Verification Photos</button>
             </div>
             <div class="col-xl-2 col-lg-3 col-12">
-                <button class="menu-button btn btn-dark my-2" ><a href="/">Main Menu</a></button>
+                <button class="menu-button btn btn-dark my-2" onClick={(e) => {
+      e.preventDefault();
+      window.location.href='/';
+      }}>Main Menu</button>
             </div>
         </div>
 
