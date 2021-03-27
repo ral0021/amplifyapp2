@@ -1,6 +1,73 @@
-import React from 'react';
- 
+import React, { useState, useEffect } from 'react';
+import { listVerifications } from '../graphql/queries';
+// import { createMedication as createMedicationMutation, deleteMedication as deleteMedicationMutation } from '../graphql/mutations';
+import { Case, ForEach, If, Switch } from 'react-control-flow-components';
+
+
+import { API, Auth, Storage } from 'aws-amplify';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+
+const initialFormState = { name: '', quantity: '', refill: '' }
+var re;
+
 const Verification_photos = () => {
+
+    const [verifications, setVerifications] = useState([]);
+  
+  
+  Promise.resolve(getUser()).then(function(result){
+                        console.log("result:", result);
+                        re= new String(result);
+                        console.log("rein", re);
+                    })
+  console.log("reout", re);
+
+  // console.log(Promise.resolve(getUser()).then(function(result)));
+
+  useEffect(() => {
+    fetchVerifications();
+  }, []);
+
+  async function getUser() {
+    // await (await Auth.currentCredentials()).getPromise();
+   //  const user = await Auth.currentUserInfo();
+   const user = (await Auth.currentSession().then(token => { return token } )).getIdToken().payload;
+   console.log("info", user["cognito:username"]);
+    return user["cognito:username"];
+  }
+
+  async function fetchVerifications() {
+    const apiData = await API.graphql({ query: listVerifications });
+    console.log("apiData: ", apiData);
+  const verificationsFromAPI = apiData.data.listVerifications.items;
+  console.log("verificationsFromAPI: ", verificationsFromAPI);
+  await Promise.all(verificationsFromAPI.map(async verification => {
+
+    console.log("verification.image: ", verification.image);
+   
+      const image = await Storage.get(verification.image);
+      console.log("image ", image);
+      verification.image = image;
+      console.log("after verification.image: ", verification.image);
+    return verification;
+  }))
+  setVerifications(apiData.data.listVerifications.items);
+  }
+
+  // async function createMedication() {
+  //   if (!formData.name || !formData.quantity || !formData.refill) return;
+  //   getUser()
+  //   formData.userid = (await Auth.currentSession()).getIdToken().payload["cognito:username"];
+  //   await API.graphql({ query: createMedicationMutation, variables: { input: formData } });
+  //   setMedications([ ...medications, formData ]);
+  //   setFormData(initialFormState);
+  // }
+
+  // async function deleteMedication({ id }) {
+  //   const newMedicationsArray = medications.filter(note => note.id !== id);
+  //   setMedications(newMedicationsArray);
+  //   await API.graphql({ query: deleteMedicationMutation, variables: { input: { id } }});
+  // }
     return (
     	<div>
     		<meta charset="utf-8"/>
@@ -28,28 +95,25 @@ const Verification_photos = () => {
         <div class="row justify-content-center my-5 ">
             <h1 class="display-6 mb-5">Verification Photos</h1>
             <div class="container">
+                {verifications.map(item => (
+                    
+                
+                <If test={re.localeCompare(new String(item.userid))==0}>
                 <div class="row">
                     <div class="col">
-                        <img id="menu-image" src="./photos/me.jpg"/>
+                        {item.image && <img id="menu-image" src={item.image}/>}
                     </div>
                     <div class="col">
                         <div class="card">
-                            <div class="card-header">Discription</div>
-                            <p class="text-center">Sample Text</p>
+                            <div class="card-header">{item.title}</div>
+                            <p class="text-center">{item.description}</p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <img id="menu-image" src="./photos/me.jpg"/>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-header">Discription</div>
-                            <p class="text-center">Sample Text</p>
-                        </div>
-                    </div>
-                </div>
+              </If>
+         
+              ))}
+
             </div>
         </div>
 

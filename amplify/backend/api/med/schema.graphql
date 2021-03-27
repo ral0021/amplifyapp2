@@ -5,3 +5,11 @@ type Medication @model {
   refill: String
   userid: String
 }
+
+type Verification @model {
+	id: ID!
+	title: String!
+	description: String
+	image: String
+	userid: String
+}

@@ -117,7 +117,7 @@ const Current_medication = () => {
 
          		{medications.map(item => (
          			
-         		
+
             	<If test={re.localeCompare(new String(item.userid))==0}>
             	<tr>
             	
@@ -126,6 +126,7 @@ const Current_medication = () => {
               <td>{item.refill}</td>
               </tr>
               </If>
+              
          
               ))}
 

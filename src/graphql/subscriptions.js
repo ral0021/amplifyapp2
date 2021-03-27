@@ -40,3 +40,42 @@ export const onDeleteMedication = /* GraphQL */ `
     }
   }
 `;
+export const onCreateVerification = /* GraphQL */ `
+  subscription OnCreateVerification {
+    onCreateVerification {
+      id
+      title
+      description
+      image
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateVerification = /* GraphQL */ `
+  subscription OnUpdateVerification {
+    onUpdateVerification {
+      id
+      title
+      description
+      image
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteVerification = /* GraphQL */ `
+  subscription OnDeleteVerification {
+    onDeleteVerification {
+      id
+      title
+      description
+      image
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;

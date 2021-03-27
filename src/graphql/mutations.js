@@ -49,3 +49,51 @@ export const deleteMedication = /* GraphQL */ `
     }
   }
 `;
+export const createVerification = /* GraphQL */ `
+  mutation CreateVerification(
+    $input: CreateVerificationInput!
+    $condition: ModelVerificationConditionInput
+  ) {
+    createVerification(input: $input, condition: $condition) {
+      id
+      title
+      description
+      image
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateVerification = /* GraphQL */ `
+  mutation UpdateVerification(
+    $input: UpdateVerificationInput!
+    $condition: ModelVerificationConditionInput
+  ) {
+    updateVerification(input: $input, condition: $condition) {
+      id
+      title
+      description
+      image
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteVerification = /* GraphQL */ `
+  mutation DeleteVerification(
+    $input: DeleteVerificationInput!
+    $condition: ModelVerificationConditionInput
+  ) {
+    deleteVerification(input: $input, condition: $condition) {
+      id
+      title
+      description
+      image
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
