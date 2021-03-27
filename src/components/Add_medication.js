@@ -7,7 +7,7 @@ import { API, Auth} from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 
 
-	const initialFormState = { name: '', quantity: '', refill: '' }
+	const initialFormState = { name: '', start:'', end:'', slot1:false, slot2:false, slot3:false};
 	
  
 const Add_medication = () => {
@@ -32,7 +32,7 @@ const Add_medication = () => {
   }
 
   async function createMedication() {
-    if (!formData.name || !formData.quantity || !formData.refill) return;
+    if (!formData.name || !formData.start || !formData.end) return;
     getUser()
     formData.userid = (await Auth.currentSession()).getIdToken().payload["cognito:username"];
     await API.graphql({ query: createMedicationMutation, variables: { input: formData } });
@@ -84,14 +84,32 @@ const Add_medication = () => {
         </div>
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
-                <input type="number" class="form-control custom-input" placeholder="Quantity" onChange={e => setFormData({ ...formData, 'quantity': e.target.value})}
-        value={formData.quantity} required/>
+                <input type="date" class="form-control custom-input" placeholder="Start Date" onChange={e => setFormData({ ...formData, 'start': e.target.value})}
+        value={formData.start} required/>
             </div>
         </div>
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
-                <input type="number" class="form-control custom-input" placeholder="Refill Frequency (Days)" required onChange={e => setFormData({ ...formData, 'refill': e.target.value})}
-                value={formData.refill}/>
+                <input type="date" class="form-control custom-input" placeholder="End Date" required onChange={e => setFormData({ ...formData, 'end': e.target.value})}
+                value={formData.end}/>
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
+            	<input type="checkbox" id="slot1" name="slot1" onChange={e => setFormData({ ...formData, 'slot1': e.target.checked})}/>
+            	<label for="slot1"> Time Slot 1</label>
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
+            	<input type="checkbox" id="slot2" name="slot2" onChange={e => setFormData({ ...formData, 'slot2': e.target.checked})}/>
+            	<label for="slot1"> Time Slot 2</label>
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
+            	<input type="checkbox" id="slot3" name="slot3" onChange={e => setFormData({ ...formData, 'slot3': e.target.checked})}/>
+            	<label for="slot3"> Time Slot 3</label>
             </div>
         </div>
         <div class="row justify-content-center my-4">
