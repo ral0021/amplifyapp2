@@ -10,7 +10,11 @@ export const createMedication = /* GraphQL */ `
       id
       name
       quantity
-      refill
+      start
+      end
+      slot1
+      slot2
+      slot3
       userid
       createdAt
       updatedAt
@@ -26,7 +30,11 @@ export const updateMedication = /* GraphQL */ `
       id
       name
       quantity
-      refill
+      start
+      end
+      slot1
+      slot2
+      slot3
       userid
       createdAt
       updatedAt
@@ -42,7 +50,11 @@ export const deleteMedication = /* GraphQL */ `
       id
       name
       quantity
-      refill
+      start
+      end
+      slot1
+      slot2
+      slot3
       userid
       createdAt
       updatedAt
@@ -92,6 +104,102 @@ export const deleteVerification = /* GraphQL */ `
       description
       image
       userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createDispense = /* GraphQL */ `
+  mutation CreateDispense(
+    $input: CreateDispenseInput!
+    $condition: ModelDispenseConditionInput
+  ) {
+    createDispense(input: $input, condition: $condition) {
+      id
+      date
+      time
+      took
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateDispense = /* GraphQL */ `
+  mutation UpdateDispense(
+    $input: UpdateDispenseInput!
+    $condition: ModelDispenseConditionInput
+  ) {
+    updateDispense(input: $input, condition: $condition) {
+      id
+      date
+      time
+      took
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteDispense = /* GraphQL */ `
+  mutation DeleteDispense(
+    $input: DeleteDispenseInput!
+    $condition: ModelDispenseConditionInput
+  ) {
+    deleteDispense(input: $input, condition: $condition) {
+      id
+      date
+      time
+      took
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createTimeSlots = /* GraphQL */ `
+  mutation CreateTimeSlots(
+    $input: CreateTimeSlotsInput!
+    $condition: ModelTimeSlotsConditionInput
+  ) {
+    createTimeSlots(input: $input, condition: $condition) {
+      id
+      userid
+      slot1
+      slot2
+      slot3
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTimeSlots = /* GraphQL */ `
+  mutation UpdateTimeSlots(
+    $input: UpdateTimeSlotsInput!
+    $condition: ModelTimeSlotsConditionInput
+  ) {
+    updateTimeSlots(input: $input, condition: $condition) {
+      id
+      userid
+      slot1
+      slot2
+      slot3
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTimeSlots = /* GraphQL */ `
+  mutation DeleteTimeSlots(
+    $input: DeleteTimeSlotsInput!
+    $condition: ModelTimeSlotsConditionInput
+  ) {
+    deleteTimeSlots(input: $input, condition: $condition) {
+      id
+      userid
+      slot1
+      slot2
+      slot3
       createdAt
       updatedAt
     }

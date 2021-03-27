@@ -17,7 +17,7 @@ import Current_medication from './components/Current_medication'
 import Add_medication from './components/Add_medication'
 import Edit_information from './components/Edit_information'
 import Edit_user_information from './components/Edit_user_information'
-import Edit_login_information from './components/Edit_login_information'
+import Edit_time_slots from './components/Edit_time_slots'
 import Edit_caregiver_information from './components/Edit_caregiver_information'
 import Edit_machine_information from './components/Edit_machine_information'
 import Error from './components/Error';
@@ -45,7 +45,7 @@ class App extends Component {
              <Route path="/add_medication" component ={Add_medication}/>
              <Route path="/edit_information" component ={Edit_information}/>
              <Route path="/edit_user_information" component={Edit_user_information}/>
-             <Route path="/edit_login_information" component={Edit_login_information}/>
+             <Route path="/edit_time_slots" component={Edit_time_slots}/>
              <Route path="/edit_caregiver_information" component={Edit_caregiver_information}/>
              <Route path="/edit_machine_information" component={Edit_machine_information}/>
             <Route component={Error}/>

@@ -7,7 +7,11 @@ export const getMedication = /* GraphQL */ `
       id
       name
       quantity
-      refill
+      start
+      end
+      slot1
+      slot2
+      slot3
       userid
       createdAt
       updatedAt
@@ -25,7 +29,11 @@ export const listMedications = /* GraphQL */ `
         id
         name
         quantity
-        refill
+        start
+        end
+        slot1
+        slot2
+        slot3
         userid
         createdAt
         updatedAt
@@ -60,6 +68,72 @@ export const listVerifications = /* GraphQL */ `
         description
         image
         userid
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getDispense = /* GraphQL */ `
+  query GetDispense($id: ID!) {
+    getDispense(id: $id) {
+      id
+      date
+      time
+      took
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listDispenses = /* GraphQL */ `
+  query ListDispenses(
+    $filter: ModelDispenseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDispenses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        date
+        time
+        took
+        userid
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getTimeSlots = /* GraphQL */ `
+  query GetTimeSlots($id: ID!) {
+    getTimeSlots(id: $id) {
+      id
+      userid
+      slot1
+      slot2
+      slot3
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTimeSlotss = /* GraphQL */ `
+  query ListTimeSlotss(
+    $filter: ModelTimeSlotsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTimeSlotss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        userid
+        slot1
+        slot2
+        slot3
         createdAt
         updatedAt
       }

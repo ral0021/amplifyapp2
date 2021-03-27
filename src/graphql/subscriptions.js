@@ -7,7 +7,11 @@ export const onCreateMedication = /* GraphQL */ `
       id
       name
       quantity
-      refill
+      start
+      end
+      slot1
+      slot2
+      slot3
       userid
       createdAt
       updatedAt
@@ -20,7 +24,11 @@ export const onUpdateMedication = /* GraphQL */ `
       id
       name
       quantity
-      refill
+      start
+      end
+      slot1
+      slot2
+      slot3
       userid
       createdAt
       updatedAt
@@ -33,7 +41,11 @@ export const onDeleteMedication = /* GraphQL */ `
       id
       name
       quantity
-      refill
+      start
+      end
+      slot1
+      slot2
+      slot3
       userid
       createdAt
       updatedAt
@@ -74,6 +86,84 @@ export const onDeleteVerification = /* GraphQL */ `
       description
       image
       userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateDispense = /* GraphQL */ `
+  subscription OnCreateDispense {
+    onCreateDispense {
+      id
+      date
+      time
+      took
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateDispense = /* GraphQL */ `
+  subscription OnUpdateDispense {
+    onUpdateDispense {
+      id
+      date
+      time
+      took
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDispense = /* GraphQL */ `
+  subscription OnDeleteDispense {
+    onDeleteDispense {
+      id
+      date
+      time
+      took
+      userid
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateTimeSlots = /* GraphQL */ `
+  subscription OnCreateTimeSlots {
+    onCreateTimeSlots {
+      id
+      userid
+      slot1
+      slot2
+      slot3
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTimeSlots = /* GraphQL */ `
+  subscription OnUpdateTimeSlots {
+    onUpdateTimeSlots {
+      id
+      userid
+      slot1
+      slot2
+      slot3
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTimeSlots = /* GraphQL */ `
+  subscription OnDeleteTimeSlots {
+    onDeleteTimeSlots {
+      id
+      userid
+      slot1
+      slot2
+      slot3
       createdAt
       updatedAt
     }
