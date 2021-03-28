@@ -84,6 +84,15 @@ body
     background: #cfcf55;
 }
 
+#true
+{
+  background-color: #3ba13d;
+}
+#false
+{
+  background-color: red;
+}
+
 #green
 {
     background: #3ba13d;

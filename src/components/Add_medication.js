@@ -38,6 +38,7 @@ const Add_medication = () => {
     await API.graphql({ query: createMedicationMutation, variables: { input: formData } });
     setMedications([ ...medications, formData ]);
     setFormData(initialFormState);
+    alert("Medication Created");
   }
 
   async function deleteMedication({ id }) {
@@ -84,12 +85,14 @@ const Add_medication = () => {
         </div>
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
+            	<p>Start Date</p>
                 <input type="date" class="form-control custom-input" placeholder="Start Date" onChange={e => setFormData({ ...formData, 'start': e.target.value})}
         value={formData.start} required/>
             </div>
         </div>
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
+            	<p>End Date</p>
                 <input type="date" class="form-control custom-input" placeholder="End Date" required onChange={e => setFormData({ ...formData, 'end': e.target.value})}
                 value={formData.end}/>
             </div>
@@ -108,7 +111,8 @@ const Add_medication = () => {
         </div>
         <div class="row justify-content-center my-2">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-7 px-1">
-            	<input type="checkbox" id="slot3" name="slot3" onChange={e => setFormData({ ...formData, 'slot3': e.target.checked})}/>
+            	<input type="checkbox" id="slot3" name="slot3" onChange={e => setFormData({ ...formData, 'slot3': e.target.checked})}
+                value={formData.slot3}/>
             	<label for="slot3"> Time Slot 3</label>
             </div>
         </div>
