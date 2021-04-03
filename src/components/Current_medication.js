@@ -15,6 +15,9 @@ const Current_medication = (props) => {
 	const [medications, setMedications] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
   // var search = this != null ? Qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).search: '';
+
+  console.log(new String("apple"));
+
   const searc = props.location.search; 
 const params = new URLSearchParams(searc);
 const search = params.get('search'); 
@@ -64,13 +67,13 @@ const search = params.get('search');
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet"/>
     <title>Current Medication</title>
   
-    <div id="banner" class="row text-center py-3">
+    <div id="menu-banner" class="row text-center py-3">
         <div class="col">
-            <p class="display-5" id="login-title">
-                <a href="/">
-                    <img id="menu-image" src="https://wchstv.com/resources/media/1f5b2909-ee90-495b-be68-68d26537cbab-large16x9_WVU.png?1518011273124"/>
-                </a>
-            </p>
+          <p class="display-5" id="login-title">
+            <a href="/">
+                <img id="menu-image" src="https://wchstv.com/resources/media/1f5b2909-ee90-495b-be68-68d26537cbab-large16x9_WVU.png?1518011273124"/>
+            </a>
+          </p>
         </div>
     </div>
     
@@ -128,7 +131,7 @@ const search = params.get('search');
          		{medications.map(item => (
          			
          		
-            	<If test={search==null ? re.localeCompare(new String(item.userid))==0: re.localeCompare(new String(item.userid))==0 && search.localeCompare(new String(item.name))==0}>
+            	<If test={search==null ? re == item.userid: re==item.userid && search==item.name}>
             	<tr>
             	
               <td>{item.name}</td>

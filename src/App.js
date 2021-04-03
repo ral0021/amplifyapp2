@@ -25,15 +25,14 @@ import Navigation from './components/Navigation';
 
 
 
-
  
 class App extends Component {
   
   render() {
-    return (      
+    return (
+
        <BrowserRouter>
         <div>
-          
             <Switch>
              <Route path="/" component={Home} exact/>
              <Route path="/consumption_history" component={Consumption_history}/>
